@@ -8,8 +8,7 @@ import {
 } from "@/components/home/homeAnimations";
 import { api } from "@/lib/api";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export const revalidate = 60;
 
 const HomePage = async () => {
   let categories: any[] = [];

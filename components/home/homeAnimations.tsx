@@ -58,22 +58,20 @@ export const AnimatedHero = () => {
     <section className="relative pt-32 pb-24 overflow-hidden">
       <motion.div
         animate={{
-          scale: [1, 1.15, 1],
+          scale: [1, 1.1, 1],
           opacity: [0.15, 0.25, 0.15],
-          x: [0, 20, 0],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-0 right-0 w-175 h-137.5 bg-primary/20 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 -z-10 pointer-events-none"
+        className="absolute top-0 right-0 w-125 h-100 bg-primary/20 rounded-full blur-2xl -translate-y-1/3 translate-x-1/3 -z-10 pointer-events-none transform-gpu will-change-transform"
       />
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
+          scale: [1, 1.15, 1],
           opacity: [0.1, 0.2, 0.1],
-          y: [0, -20, 0],
         }}
         transition={{
           duration: 12,
@@ -81,7 +79,7 @@ export const AnimatedHero = () => {
           ease: "easeInOut",
           delay: 2,
         }}
-        className="absolute bottom-0 left-0 w-150 h-125 bg-primary/15 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 -z-10 pointer-events-none"
+        className="absolute bottom-0 left-0 w-112.5 h-95 bg-primary/15 rounded-full blur-2xl translate-y-1/3 -translate-x-1/3 -z-10 pointer-events-none transform-gpu will-change-transform"
       />
 
       <motion.div
@@ -91,8 +89,8 @@ export const AnimatedHero = () => {
         className="max-w-7xl mx-auto px-4 md:px-6 text-center relative z-10"
       >
         <motion.div variants={fadeInUp} className="inline-block mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 shadow-sm backdrop-blur-md">
-            <Sparkles size={14} className="animate-spin-slow text-primary" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 shadow-sm backdrop-blur-sm">
+            <Sparkles size={14} className="text-primary" />
             <span>The New Standard in Renting</span>
           </div>
         </motion.div>
@@ -101,18 +99,9 @@ export const AnimatedHero = () => {
           className="text-5xl md:text-7xl font-extrabold font-outfit text-foreground tracking-tight max-w-4xl mx-auto leading-[1.1]"
         >
           Find your perfect home, <br />
-          <motion.span
-            initial={{ backgroundPosition: "0% 50%" }}
-            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary/80 to-primary/50 bg-size-[200%_auto]"
-          >
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary/90 to-primary/60">
             without the hassle.
-          </motion.span>
+          </span>
         </motion.h1>
         <motion.p
           variants={fadeInUp}
@@ -395,15 +384,10 @@ export const AnimatedCTA = () => {
     <section className="py-20 bg-primary relative overflow-hidden">
       <motion.div
         animate={{
-          rotate: [0, 360],
-          scale: [1, 1.2, 1],
+          scale: [1, 1.1, 1],
         }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute top-0 right-0 w-125 h-125 bg-white/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-100 h-100 bg-white/10 rounded-full blur-2xl pointer-events-none -translate-y-1/2 translate-x-1/3 transform-gpu will-change-transform"
       />
       <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
         <motion.div

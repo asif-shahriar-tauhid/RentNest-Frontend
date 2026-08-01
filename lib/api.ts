@@ -90,6 +90,7 @@ export const serverFetch = async <T>(
   const response = await fetch(url, {
     ...options,
     headers,
+    signal: options.signal || AbortSignal.timeout(6000),
     cache: options.cache || "no-store",
   });
 

@@ -2,7 +2,6 @@
 "use client";
 import { formatCurrency } from "@/lib/utils";
 import { Property } from "@/types";
-import { spawn } from "child_process";
 import { motion } from "framer-motion";
 import { ArrowRight, Bath, Bed, MapPin, Maximize, Star } from "lucide-react";
 import Image from "next/image";
@@ -48,7 +47,7 @@ const PropertyCard = ({
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
-        className="group relative bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
+        className="group relative bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all transform-gpu will-change-transform"
       >
         <Link
           href={`/properties/${property.id}`}
@@ -82,7 +81,7 @@ const PropertyCard = ({
               </span>
             )}
             {property.category && (
-              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-black/60 text-white shadow-s, backdrop-blur-md border border-white/10">
+              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-black/80 text-white shadow-sm border border-white/10">
                 {property.category.name}
               </span>
             )}
@@ -150,12 +149,12 @@ const PropertyCard = ({
     <motion.div
       whileHover={{ y: -2 }}
       transition={{ duration: 0.2 }}
-      className="group relative bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col sm:flex-row"
+      className="group relative bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col sm:flex-row transform-gpu will-change-transform"
     >
       {/* Image Section */}
       <Link
         href={`/properties/${property.id}`}
-        className="block relative w-full sm:w-64 md:w-72 lg:w-80 shrink-0 aspect-[16/10] sm:aspect-auto overflow-hidden bg-muted"
+        className="block relative w-full sm:w-64 md:w-72 lg:w-80 shrink-0 aspect-16/10 sm:aspect-auto overflow-hidden bg-muted"
       >
         {property.images && property.images.length > 0 ? (
           <Image
@@ -185,7 +184,7 @@ const PropertyCard = ({
             </span>
           )}
           {property.category && (
-            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-black/60 text-white shadow-sm backdrop-blur-md border border-white/10">
+            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-black/80 text-white shadow-sm border border-white/10">
               {property.category.name}
             </span>
           )}
