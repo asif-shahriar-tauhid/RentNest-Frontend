@@ -1,0 +1,29 @@
+import { AnimatedHero } from "@/components/home/homeAnimations";
+import { api } from "@/lib/api";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+const HomePage = async () => {
+  let categories: any[] = [];
+  let featuredProperties: any[] = [];
+
+  try {
+    const [categoriesData, propertiesData] = await Promise.all([
+      api.categories.getAll(true).catch(() => []),
+      api.properties.getAll("limit=10", true).catch(() => ({ properties: [] })),
+    ]);
+    categories = categoriesData;
+    featuredProperties = propertiesData.properties || [];
+  } catch (error) {
+    console.error("Failed to fetch data in homepage", error);
+  }
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <AnimatedHero />
+    </div>
+  );
+};
+
+export default HomePage;
