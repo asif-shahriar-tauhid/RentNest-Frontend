@@ -57,11 +57,8 @@ const PropertiesPage = async (props: { searchParams: Promise<any> }) => {
         <div className="flex flex-col md:flex-row gap-8">
           <aside className="w-full md:w-72 shrink-0">
             <div className="sticky top-24">
-              <Suspense fallback={
-                <div>Loading filters...</div>
-                <SearchFilter categories = {categories}/>
-              }>
-
+              <Suspense fallback={<div>Loading filters...</div>}>
+                <SearchFilter categories={categories} />
               </Suspense>
             </div>
           </aside>
