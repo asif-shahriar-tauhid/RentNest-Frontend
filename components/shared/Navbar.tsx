@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -109,12 +110,90 @@ const Navbar = () => {
           <button onClick={toggleDark} className="p-2 text-muted-foreground">
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <button onClick={()=> setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-foreground">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-foreground"
+          >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-
           </button>
         </div>
       </div>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              height: 0,
+            }}
+            animate={{
+              opacity: 1,
+              height: "auto",
+            }}
+            exit={{
+              opacity: 0,
+              height: 0,
+            }}
+            className="md:hidden border-t border-border bg-background overflow-hidden"
+          >
+            <div className="p-4 flex flex-col gap-4">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 text-sm font-medium rounded-xl hover:bg-muted transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/properties"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 text-sm font-medium rounded-xl hover:bg-muted transition-colors"
+              >
+                Browse
+              </Link>
+
+              <div className="h-px bg-border my-2" />
+
+              {user ? (
+                <>
+                  <Link
+                    href={getDashBoardLink()}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-4 py-3 text-sm font-medium rounded-xl border border-border bg-card text-center"
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="px-4 py-3 text-sm font-medium rounded-xl text-primary-foreground text-center"
+                  >
+                    Log out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/auth/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-4 py-3 text-sm font-medium rounded-xl border border-border bg-card text-center"
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    href="/auth/register"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-4 py-3 text-sm font-medium rounded-xl bg-primary text-primary-foreground text-center"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
