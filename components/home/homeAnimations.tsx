@@ -241,8 +241,51 @@ export const AnimatedFeaturedProperties = ({
             </Link>
           </motion.div>
         </motion.div>
-        <motion.div>
-          <PropertyCard property={property} variant="vertical" />
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+          }}
+          className="flex gap-6 overflow-x-auto pb-6 pt-1 snap-x snap-mandatory -mx-4 px-4 md:-mx-6 md:px-6 scrollbar-thin"
+        >
+          {featuredProperties.map((property: any, index: number) => (
+            <motion.div
+              key={property.id}
+              initial={{
+                opacity: 0,
+                x: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+              }}
+              className="w-75 sm:w-85 lg:w-[calc(33.333%-16px)] shrink-0 snap-start"
+            >
+              <PropertyCard property={property} variant="vertical" />
+            </motion.div>
+          ))}
+          {featuredProperties.length === 0 && (
+            <div className="w-full py-20 text-center text-muted-foreground">
+              No featured properties available at the moment.
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
