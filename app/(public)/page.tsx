@@ -1,4 +1,7 @@
-import { AnimatedHero } from "@/components/home/homeAnimations";
+import {
+  AnimatedCategories,
+  AnimatedHero,
+} from "@/components/home/homeAnimations";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -22,6 +25,7 @@ const HomePage = async () => {
   return (
     <div className="flex flex-col min-h-screen">
       <AnimatedHero />
+      <AnimatedCategories categories={categories} />
     </div>
   );
 };

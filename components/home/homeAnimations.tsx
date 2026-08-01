@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Building2, Sparkles } from "lucide-react";
 import SearchBox from "../property/SearchBox";
+import Link from "next/link";
 
 const fadeInUp: Variants = {
   hidden: {
@@ -120,4 +121,78 @@ export const AnimatedHero = () => {
   );
 };
 
-export
+export const AnimatedCategories = ({ categories }: { categories: any[] }) => {
+  if (!categories || categories.length === 0) return null;
+
+  return (
+    <section className="py-16 bg-background">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center justify-between mb-8"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold font-outfit text-foreground tracking-tight">
+            Browse by Category
+          </h2>
+          <span className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">
+            Explore Types
+          </span>
+        </motion.div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+        >
+          {categories.map((category: any) => (
+            <motion.div
+              key={category.id}
+              variants={fadeInUp}
+              whileHover={{
+                y: -6,
+                scale: 1.03,
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+              }}
+            >
+              <Link
+                href={`/properties?categoryId=${category.id}`}
+                className="group flex flex-col items-center justify-center p-6 rounded-2xl border border-border bg-card hover:bg-primary/5 hover:border-primary/40 hover:shadow-lg transition-all text-center h-full"
+              >
+                <div className="w-12 h-12 rounded-full bg-muted group-hover:bg-primary/10 flex items-center justify-center mb-4 transition-colors">
+                  <Building2
+                    className="text-muted-foreground group-hover:text-primary transition-colors"
+                    size={24}
+                  ></Building2>
+                </div>
+                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {category.name}
+                </h3>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
