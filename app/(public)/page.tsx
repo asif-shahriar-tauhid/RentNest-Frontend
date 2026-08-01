@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   AnimatedCategories,
+  AnimatedCTA,
   AnimatedFeaturedProperties,
   AnimatedHero,
   AnimatedHowItWorks,
@@ -30,6 +32,7 @@ const HomePage = async () => {
       <AnimatedCategories categories={categories} />
       <AnimatedFeaturedProperties featuredProperties={featuredProperties} />
       <AnimatedHowItWorks />
+      <AnimatedCTA />
     </div>
   );
 };

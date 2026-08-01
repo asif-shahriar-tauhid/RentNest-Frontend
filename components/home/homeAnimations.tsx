@@ -1,7 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, Building2, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Key,
+  Search,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import SearchBox from "../property/SearchBox";
 import Link from "next/link";
 import PropertyCard from "../property/PropertyCard";
@@ -293,10 +301,160 @@ export const AnimatedFeaturedProperties = ({
 };
 
 export const AnimatedHowItWorks = () => {
-    const steps = [
-    { icon: Search, title: "1. Discover", desc: "Browse thousands of verified properties with high-quality photos and detailed amenities." },
-    { icon: ShieldCheck, title: "2. Request & Approve", desc: "Submit a rental request securely. Landlords review and approve instantly." },
-    { icon: Key, title: "3. Pay & Move In", desc: "Pay rent online via Stripe and get the keys. Your digital lease is fully managed." }
+  const steps = [
+    {
+      icon: Search,
+      title: "1. Discover",
+      desc: "Browse thousands of verified properties with high-quality photos and detailed amenities.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "2. Request & Approve",
+      desc: "Submit a rental request securely. Landlords review and approve instantly.",
+    },
+    {
+      icon: Key,
+      title: "3. Pay & Move In",
+      desc: "Pay rent online via Stripe and get the keys. Your digital lease is fully managed.",
+    },
   ];
-  return <div></div>
-}
+  return (
+    <section className="py-24 bg-background overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold font-outfit text-foreground mb-4">
+            How RentNest Works
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-16">
+            We&apos;ve simplified the process so you can focus on what matters
+            most — moving into your new home.{" "}
+          </p>
+        </motion.div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"
+        >
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              variants={fadeInUp}
+              whileHover={{ y: -8 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              }}
+              className="flex flex-col items-center group p-6 rounded-3xl border border-border/50 bg-card/40 hover:bg-card hover:border-border hover:shadow-xl transition-all"
+            >
+              <motion.div
+                whileHover={{
+                  rotate: 12,
+                  scale: 1.1,
+                }}
+                className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 relative"
+              >
+                <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl rotate-3 group-hover:rotate-6 transition-transform" />
+                <step.icon size={28} className="text-primary relative z-10" />
+              </motion.div>
+              <h3 className="text-xl font-bold text-foreground mb-3 font-outfit">
+                {step.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+                {step.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export const AnimatedCTA = () => {
+  return (
+    <section className="py-20 bg-primary relative overflow-hidden">
+      <motion.div
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute top-0 right-0 w-125 h-125 bg-white/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"
+      />
+      <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.95,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-5xl font-bold font-outfit text-primary-foreground mb-6 tracking-tight">
+            Ready to find your nest?
+          </h2>
+          <p className="text-primary-foreground/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            Join thousands of tenants and landlords experiencing the future of
+            property rentals today.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="w-full sm:w-auto"
+            >
+              <Link
+                href="/auth/register"
+                className="block w-full sm:w-auto px-8 py-4 rounded-xl bg-background text-foreground font-bold hover:bg-muted transition-all shadow-xl text-center"
+              >
+                Get Started for Free
+              </Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="w-full sm:w-auto"
+            >
+              <Link
+                href="/properties"
+                className="block w-full sm:w-auto px-8 py-4 rounded-xl bg-primary-foreground/10 text-primary-foreground font-bold border border-primary-foreground/20 hover:bg-primary-foreground/20 transition-all text-center"
+              >
+                Browse Properties
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
