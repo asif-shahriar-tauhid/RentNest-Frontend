@@ -1,5 +1,6 @@
 import {
   AnimatedCategories,
+  AnimatedFeaturedProperties,
   AnimatedHero,
 } from "@/components/home/homeAnimations";
 import { api } from "@/lib/api";
@@ -26,6 +27,7 @@ const HomePage = async () => {
     <div className="flex flex-col min-h-screen">
       <AnimatedHero />
       <AnimatedCategories categories={categories} />
+      <AnimatedFeaturedProperties featuredProperties={featuredProperties} />
     </div>
   );
 };

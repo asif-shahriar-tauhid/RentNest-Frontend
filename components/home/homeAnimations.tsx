@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Building2, Sparkles } from "lucide-react";
+import { ArrowRight, Building2, Sparkles } from "lucide-react";
 import SearchBox from "../property/SearchBox";
 import Link from "next/link";
+import PropertyCard from "../property/PropertyCard";
 
 const fadeInUp: Variants = {
   hidden: {
@@ -191,6 +192,57 @@ export const AnimatedCategories = ({ categories }: { categories: any[] }) => {
               </Link>
             </motion.div>
           ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export const AnimatedFeaturedProperties = ({
+  featuredProperties,
+}: {
+  featuredProperties: any[];
+}) => {
+  return (
+    <section className="py-20 bg-muted/30 border-y border-border">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10"
+        >
+          <div>
+            <h2 className="text-3xl font-bold font-outfit text-foreground tracking-tight">
+              Featured Properties
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Handpicked exclusive listings. Scroll horizontally to explore
+              more.
+            </p>
+          </div>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/properties"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-background border border-border text-foreground font-semibold hover:bg-muted transition-all shadow-sm shrink-0"
+            >
+              <span>View All Properties</span>
+              <ArrowRight size={16} />
+            </Link>
+          </motion.div>
+        </motion.div>
+        <motion.div>
+          <PropertyCard property={property} variant="vertical" />
         </motion.div>
       </div>
     </section>
