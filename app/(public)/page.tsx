@@ -2,6 +2,7 @@ import {
   AnimatedCategories,
   AnimatedFeaturedProperties,
   AnimatedHero,
+  AnimatedHowItWorks,
 } from "@/components/home/homeAnimations";
 import { api } from "@/lib/api";
 
@@ -28,6 +29,7 @@ const HomePage = async () => {
       <AnimatedHero />
       <AnimatedCategories categories={categories} />
       <AnimatedFeaturedProperties featuredProperties={featuredProperties} />
+      <AnimatedHowItWorks />
     </div>
   );
 };

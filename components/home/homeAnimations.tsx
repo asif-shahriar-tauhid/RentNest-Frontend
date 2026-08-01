@@ -291,3 +291,12 @@ export const AnimatedFeaturedProperties = ({
     </section>
   );
 };
+
+export const AnimatedHowItWorks = () => {
+    const steps = [
+    { icon: Search, title: "1. Discover", desc: "Browse thousands of verified properties with high-quality photos and detailed amenities." },
+    { icon: ShieldCheck, title: "2. Request & Approve", desc: "Submit a rental request securely. Landlords review and approve instantly." },
+    { icon: Key, title: "3. Pay & Move In", desc: "Pay rent online via Stripe and get the keys. Your digital lease is fully managed." }
+  ];
+  return <div></div>
+}
