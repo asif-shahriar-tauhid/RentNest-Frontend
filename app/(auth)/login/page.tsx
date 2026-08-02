@@ -42,6 +42,8 @@ export default function LoginPage() {
     try {
       await login(data);
     } catch (error) {
+      // Error toast is already shown in AuthContext.login
+    } finally {
       setLoading(false);
     }
   };

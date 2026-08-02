@@ -13,7 +13,7 @@
 
 ## 🔗 Quick Links & Live Demos
 
-- 🌐 **Live Frontend Application**: [https://rentnest-teal.vercel.app](https://rentnest-teal.vercel.app/)
+- 🌐 **Live Frontend Application**: [https://rentnest-teal.vercel.app/](https://rentnest-teal.vercel.app/)
 - 💻 **GitHub Repository**: [https://github.com/asif-shahriar-tauhid/RentNest-Frontend](https://github.com/asif-shahriar-tauhid/RentNest-Frontend)
 - 🔌 **Backend API URL**: [https://rentnestb7a4.vercel.app](https://rentnestb7a4.vercel.app)
 
@@ -27,7 +27,7 @@ Test the platform across different user roles using the following pre-seeded cre
 | :--- | :--- | :--- |
 | 🛡️ **Admin** | `admin1@rentnest.com` | `Password123!` |
 | 🏠 **Landlord** | `landlord1@rentnest.com` | `Password123!` |
-| 👤 **Tenant** | `tenant1@rentnest.com` | `password` |
+| 👤 **Tenant** | `Create an account using own credentials`
 
 ---
 

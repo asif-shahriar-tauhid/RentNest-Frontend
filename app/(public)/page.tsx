@@ -17,10 +17,12 @@ const HomePage = async () => {
   try {
     const [categoriesData, propertiesData] = await Promise.all([
       api.categories.getAll(true).catch(() => []),
-      api.properties.getAll("limit=10", true).catch(() => ({ properties: [] })),
+      api.properties.getAll("limit=10", true).catch(() => []),
     ]);
-    categories = categoriesData;
-    featuredProperties = propertiesData.properties || [];
+    categories = Array.isArray(categoriesData) ? categoriesData : [];
+    featuredProperties = Array.isArray(propertiesData)
+      ? propertiesData
+      : propertiesData?.properties || propertiesData?.data || [];
   } catch (error) {
     console.error("Failed to fetch data in homepage", error);
   }

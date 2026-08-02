@@ -8,15 +8,15 @@ import { Check, X, FileText } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/lib/api";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 export const LandlordRequestsTable = ({
   requests,
+  onStatusChange,
 }: {
   requests: RentalRequest[];
+  onStatusChange?: () => void;
 }) => {
   const [processingId, setProcessingId] = useState<string | null>(null);
-  const router = useRouter();
 
   if (requests.length === 0) {
     return (
@@ -40,7 +40,7 @@ export const LandlordRequestsTable = ({
       setProcessingId(id);
       await api.rentals.updateStatus(id, status);
       toast.success(`Request ${status.toLowerCase()} successfully`);
-      router.refresh();
+      if (onStatusChange) onStatusChange();
     } catch (error: any) {
       toast.error(error.message || "Failed to update request");
     } finally {

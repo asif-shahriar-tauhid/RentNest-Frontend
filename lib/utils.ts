@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatCurrency(amount: number) {
-  return new Intl.NumberFormat("en-BD", {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 0,
@@ -16,5 +16,11 @@ export function formatCurrency(amount: number) {
 }
 
 export function formatDate(dateStr: string | Date) {
-  return format(new Date(dateStr), "MMM d, yyyy");
+  try {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return "N/A";
+    return format(date, "MMM d, yyyy");
+  } catch {
+    return "N/A";
+  }
 }

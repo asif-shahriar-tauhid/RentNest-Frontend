@@ -167,7 +167,7 @@ const Navbar = () => {
                       logout();
                       setMobileMenuOpen(false);
                     }}
-                    className="px-4 py-3 text-sm font-medium rounded-xl text-primary-foreground text-center"
+                    className="px-4 py-3 text-sm font-medium rounded-xl bg-destructive/10 text-destructive text-center"
                   >
                     Log out
                   </button>

@@ -141,7 +141,7 @@ const LandlordDashboardContent = () => {
                 Recent Rental Requests
               </h2>
             </div>
-            <LandlordRequestsTable requests={safeRequests.slice(0, 5)} />
+            <LandlordRequestsTable requests={safeRequests.slice(0, 5)} onStatusChange={fetchData} />
           </div>
         </div>
       )}
@@ -200,7 +200,7 @@ const LandlordDashboardContent = () => {
       {tab === "requests" && (
         <div className="space-y-6">
           <h2 className="text-xl font-bold text-foreground">All Requests</h2>
-          <LandlordRequestsTable requests={safeRequests} />
+          <LandlordRequestsTable requests={safeRequests} onStatusChange={fetchData} />
         </div>
       )}
 

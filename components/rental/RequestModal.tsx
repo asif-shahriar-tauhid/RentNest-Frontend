@@ -57,11 +57,12 @@ export function RequestModal({ propertyId }: { propertyId: string }) {
 
     try {
       setLoading(true);
+      const validated = validationResult.data;
       await api.rentals.create({
         propertyId,
-        moveInDate: new Date(moveInDate).toISOString(),
-        duration: parseInt(duration),
-        message: message.trim() || undefined,
+        moveInDate: new Date(validated.moveInDate).toISOString(),
+        duration: validated.duration,
+        message: validated.message || undefined,
       });
       toast.success("Rental request submitted successfully!");
       setIsOpen(false);

@@ -107,7 +107,7 @@ const PropertiesPage = async (props: { searchParams: Promise<any> }) => {
                   No properties found
                 </h3>
                 <p className="text-muted-foreground mt-2 max-w-sm">
-                  We could'nt find any properties matching your current
+                  We couldn&apos;t find any properties matching your current
                   filters. Try adjusting your search criteria.
                 </p>
               </div>
