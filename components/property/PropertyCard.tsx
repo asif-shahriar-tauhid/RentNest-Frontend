@@ -134,7 +134,7 @@ const PropertyCard = ({
               </span>
             </div>
             <Link
-              href={`/property/${property.id}`}
+              href={`/properties/${property.id}`}
               className="px-4 py-2 rounded-xl text-sm font-medium bg-primary/5 text-primary hover:bg-primary/10 transition-colors"
             >
               View Details

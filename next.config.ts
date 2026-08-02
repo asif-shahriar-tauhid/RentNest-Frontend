@@ -18,6 +18,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/property/:path*",
+        destination: "/properties/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
