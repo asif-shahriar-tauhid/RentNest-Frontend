@@ -91,13 +91,13 @@ const Navbar = () => {
           ) : (
             <div className="flex items-center gap-2">
               <Link
-                href="/auth/login"
+                href="/login"
                 className="px-4 py-2 rounded-xl text-sm font-medium text-foreground hover:bg-muted transition-all"
               >
                 Log in
               </Link>
               <Link
-                href="/auth/register"
+                href="/register"
                 className="px-4 py-2 rounded-xl text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-sm"
               >
                 Sign up

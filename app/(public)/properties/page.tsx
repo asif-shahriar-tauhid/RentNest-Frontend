@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
+import PropertyCard from "@/components/property/PropertyCard";
+import PropertyPagination from "@/components/property/PropertyPagination";
 import SearchFilter from "@/components/property/SearchFilter";
 import { api } from "@/lib/api";
-import { Divide } from "lucide-react";
 import { Suspense } from "react";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -62,6 +64,55 @@ const PropertiesPage = async (props: { searchParams: Promise<any> }) => {
               </Suspense>
             </div>
           </aside>
+
+          <div className="flex-1">
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold font-outfit text-foreground">
+                  Properties
+                </h1>
+                <p className="text-muted-foreground mt-1">
+                  Found {meta.total} properties matching your criteria.
+                </p>
+              </div>
+            </div>
+
+            {properties.length > 0 ? (
+              <>
+                <div className="flex flex-col gap-4 sm:gap-5">
+                  {properties.map((property: any) => (
+                    <PropertyCard
+                      key={property.id}
+                      property={property}
+                      variant="horizontal"
+                    />
+                  ))}
+                </div>
+
+                <Suspense fallback={null}>
+                  <PropertyPagination
+                    currentPage={meta.page}
+                    totalPages={totalPages}
+                    totalItems={meta.total}
+                    limit={meta.limit}
+                  />
+                </Suspense>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center p-16 text-center border border-border rounded-2xl bg-card">
+                <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+                  <span className="text-2xl">🔍</span>
+                </div>
+                <h3 className="text-xl font-bold text-foreground">
+                  No properties found
+                </h3>
+                <p className="text-muted-foreground mt-2 max-w-sm">
+                  We could'nt find any properties matching your current
+                  filters. Try adjusting your search criteria.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
