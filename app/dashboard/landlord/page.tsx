@@ -31,27 +31,19 @@ const LandlordDashboardContent = () => {
       setLoading(true);
       const [propsRes, rentalsRes]: [any, any] = await Promise.all([
         api.properties
-          .getAll(`landlordId=${user.id}&status=ALL&limit=100`)
+          .getAll(`status=ALL&limit=100`)
           .catch(() => []),
         api.rentals.getAll().catch(() => []),
       ]);
 
-      let listProps = Array.isArray(propsRes)
+      const allProps = Array.isArray(propsRes)
         ? propsRes
         : propsRes?.properties || propsRes?.data || [];
 
-      // If landlordId query returned empty list, fallback to fetching all properties and filtering locally
-      if (listProps.length === 0) {
-        const allPropsRes: any = await api.properties
-          .getAll("status=ALL&limit=100")
-          .catch(() => []);
-        const allList = Array.isArray(allPropsRes)
-          ? allPropsRes
-          : allPropsRes?.properties || allPropsRes?.data || [];
-        listProps = allList.filter(
-          (p: any) => p.landlordId === user.id || p.landlord?.id === user.id,
-        );
-      }
+      // Always filter to only show properties owned by this landlord
+      const listProps = allProps.filter(
+        (p: any) => p.landlordId === user.id || p.landlord?.id === user.id,
+      );
 
       const listRentals = Array.isArray(rentalsRes)
         ? rentalsRes
