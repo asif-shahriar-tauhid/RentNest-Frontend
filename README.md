@@ -13,7 +13,7 @@
 
 ## 🔗 Quick Links & Live Demos
 
-- 🌐 **Live Frontend Application**: [https://rentnest-app.vercel.app](https://rentnest-app.vercel.app) *(Replace with actual URL)*
+- 🌐 **Live Frontend Application**: [https://rentnest-app.vercel.app](https://rentnest-teal.vercel.app/) 
 - 💻 **GitHub Repository**: [https://github.com/asif-shahriar-tauhid/RentNest-Frontend](https://github.com/asif-shahriar-tauhid/RentNest-Frontend)
 - 🔌 **Backend API URL**: [https://rentnestb7a4.vercel.app](https://rentnestb7a4.vercel.app)
 
