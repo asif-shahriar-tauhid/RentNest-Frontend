@@ -2,6 +2,7 @@ import { User } from "@/types";
 import { User as UserIcon, Mail, Phone, Calendar, Shield } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { StatusBadge } from "./StatusBadge";
+import Image from "next/image";
 
 export const ProfileTab = ({ user }: { user: User }) => {
   return (
@@ -28,10 +29,11 @@ export const ProfileTab = ({ user }: { user: User }) => {
             {/* Avatar */}
             <div className="w-28 h-28 rounded-2xl bg-card border-4 border-card shadow-md flex items-center justify-center overflow-hidden relative shrink-0">
               {user.profileImage ? (
-                <img
+                <Image
                   src={user.profileImage}
                   alt={user.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               ) : (
                 <div className="w-full h-full bg-primary/10 flex items-center justify-center text-primary">

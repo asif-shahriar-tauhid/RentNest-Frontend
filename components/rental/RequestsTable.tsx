@@ -5,6 +5,7 @@ import { RentalRequest } from "@/types";
 import { formatDate } from "@/lib/utils";
 import { StatusBadge } from "../shared/StatusBadge";
 import Link from "next/link";
+import Image from "next/image";
 import { CreditCard, Home } from "lucide-react";
 import { ReviewModal } from "./ReviewModal";
 
@@ -60,13 +61,14 @@ export const RequestsTable = ({ requests }: { requests: RentalRequest[] }) => {
               >
                 <td className="px-5 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-muted">
+                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-muted relative">
                       {req.property?.images &&
                         req.property.images.length > 0 && (
-                          <img
+                          <Image
                             src={req.property.images[0]}
-                            alt=""
-                            className="w-full h-full object-cover"
+                            alt={req.property?.title || "Property"}
+                            fill
+                            className="object-cover"
                           />
                         )}
                     </div>

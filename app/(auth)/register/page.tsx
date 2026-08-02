@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   User,
   Mail,
@@ -186,12 +186,14 @@ export default function RegisterPage() {
             Profile Photo (ImgBB Upload)
           </label>
           <div className="flex items-center gap-4 p-3 rounded-xl border border-border bg-card">
-            <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center shrink-0 overflow-hidden border border-border">
+            <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center shrink-0 overflow-hidden border border-border relative">
               {previewUrl ? (
-                <img
+                <Image
                   src={previewUrl}
                   alt="Preview"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  unoptimized
                 />
               ) : (
                 <ImageIcon className="text-muted-foreground" size={24} />

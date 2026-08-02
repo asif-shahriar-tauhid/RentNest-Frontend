@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import Image from "next/image";
@@ -26,10 +25,12 @@ export default function AuthLayout({
       {/* Right side - Visual */}
       <div className="hidden md:flex flex-col justify-between p-12 relative overflow-hidden text-white border-l border-border bg-slate-950">
         {/* Background Image with Overlay */}
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80"
           alt="Luxury Rental Property"
-          className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-1000"
+          fill
+          className="object-cover scale-105 transition-transform duration-1000"
+          priority
         />
 
         {/* Modern Dark & Gradient Overlays for high legibility */}
@@ -88,9 +89,11 @@ export default function AuthLayout({
             seamless."
           </blockquote>
           <div className="mt-6 flex items-center gap-4">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
               alt="Sarah Jenkins"
+              width={48}
+              height={48}
               className="w-12 h-12 rounded-full object-cover border-2 border-primary/80 shadow-md"
             />
             <div>

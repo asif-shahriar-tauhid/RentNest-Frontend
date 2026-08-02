@@ -15,6 +15,7 @@ import {
   Settings,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 
 type NavItem = {
@@ -138,12 +139,13 @@ export const DashboardSidebar = ({
         </Link>
 
         <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 border border-border mb-8">
-          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 relative overflow-hidden">
             {user.profileImage ? (
-              <img
+              <Image
                 src={user.profileImage}
                 alt={user.name}
-                className="w-full h-full rounded-full object-cover"
+                fill
+                className="rounded-full object-cover"
               />
             ) : (
               <span className="font-bold text-primary">
