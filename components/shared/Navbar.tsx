@@ -175,14 +175,14 @@ const Navbar = () => {
               ) : (
                 <>
                   <Link
-                    href="/auth/login"
+                    href="/login"
                     onClick={() => setMobileMenuOpen(false)}
                     className="px-4 py-3 text-sm font-medium rounded-xl border border-border bg-card text-center"
                   >
                     Log in
                   </Link>
                   <Link
-                    href="/auth/register"
+                    href="/register"
                     onClick={() => setMobileMenuOpen(false)}
                     className="px-4 py-3 text-sm font-medium rounded-xl bg-primary text-primary-foreground text-center"
                   >

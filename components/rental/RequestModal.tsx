@@ -28,7 +28,7 @@ export function RequestModal({ propertyId }: { propertyId: string }) {
     setErrors({});
 
     if (!user) {
-      router.push("/auth/login");
+      router.push("/login");
       return;
     }
 
@@ -76,7 +76,7 @@ export function RequestModal({ propertyId }: { propertyId: string }) {
     <>
       <button
         onClick={() => {
-          if (!user) router.push("/auth/login");
+          if (!user) router.push("/login");
           else setIsOpen(true);
         }}
         className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all"

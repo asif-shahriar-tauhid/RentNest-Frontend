@@ -418,7 +418,7 @@ export const AnimatedCTA = () => {
               className="w-full sm:w-auto"
             >
               <Link
-                href="/auth/register"
+                href="/register"
                 className="block w-full sm:w-auto px-8 py-4 rounded-xl bg-background text-foreground font-bold hover:bg-muted transition-all shadow-xl text-center"
               >
                 Get Started for Free
