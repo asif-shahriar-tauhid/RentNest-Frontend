@@ -2,7 +2,9 @@
 
 import { cookies } from "next/headers";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = (
+  process.env.NEXT_PUBLIC_API_URL || "https://rentnestb7a4.vercel.app"
+).replace(/\/$/, "");
 
 export const loginAction = async (data: any) => {
   try {

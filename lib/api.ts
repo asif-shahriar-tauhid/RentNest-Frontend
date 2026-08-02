@@ -12,7 +12,9 @@ import {
   UserStatus,
 } from "@/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = (
+  process.env.NEXT_PUBLIC_API_URL || "https://rentnestb7a4.vercel.app"
+).replace(/\/$/, "");
 
 const getCookie = (name: string): string | null => {
   if (typeof window === "undefined" || typeof document === "undefined")
@@ -33,7 +35,8 @@ export const clientFetch = async <T>(
   endpoint: string,
   options: RequestInit = {},
 ): Promise<T> => {
-  const url = `${API_URL}${endpoint}`;
+  const baseUrl = typeof window !== "undefined" ? "" : API_URL;
+  const url = `${baseUrl}${endpoint}`;
 
   const token =
     typeof window !== "undefined"
@@ -50,19 +53,28 @@ export const clientFetch = async <T>(
     ...(options.headers as Record<string, string>),
   };
 
-  const response = await fetch(url, {
-    ...options,
-    headers,
-    credentials: "include",
-  });
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers,
+      credentials: "include",
+    });
 
-  const data: ApiResponse<T> = await response.json();
+    const data: ApiResponse<T> = await response.json();
 
-  if (!response.ok || !data.success) {
-    throw new Error(data.message || "An error occurred");
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "An error occurred");
+    }
+
+    return data.data;
+  } catch (error: any) {
+    if (error.name === "TypeError" && error.message === "Failed to fetch") {
+      throw new Error(
+        "Failed to fetch data from backend. Please check network or API connection.",
+      );
+    }
+    throw error;
   }
-
-  return data.data;
 };
 
 export const serverFetch = async <T>(
