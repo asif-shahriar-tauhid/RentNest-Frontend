@@ -105,11 +105,10 @@ export function RequestModal({ propertyId }: { propertyId: string }) {
                 <input
                   type="date"
                   min={new Date().toISOString().split("T")[0]}
-                  className={`w-full px-4 py-2 rounded-xl border bg-background focus:outline-none focus:ring-2 ${
-                    errors.moveInDate
+                  className={`w-full px-4 py-2 rounded-xl border bg-background focus:outline-none focus:ring-2 ${errors.moveInDate
                       ? "border-destructive focus:ring-destructive/20"
                       : "border-border focus:ring-primary/20"
-                  }`}
+                    }`}
                   value={moveInDate}
                   onChange={(e) => {
                     setMoveInDate(e.target.value);

@@ -202,7 +202,11 @@ export const api = {
     create: (rentalRequestId: string) =>
       clientFetch<{ url: string }>("/api/payments/create", {
         method: "POST",
-        body: JSON.stringify({ rentalRequestId }),
+        body: JSON.stringify({
+          rentalRequestId,
+          origin:
+            typeof window !== "undefined" ? window.location.origin : undefined,
+        }),
       }),
     confirm: (sessionId: string) =>
       clientFetch<Payment>("/api/payments/confirm", {

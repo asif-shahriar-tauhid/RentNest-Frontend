@@ -146,11 +146,10 @@ export default function RegisterPage() {
           <button
             type="button"
             onClick={() => setValue("role", "TENANT")}
-            className={`p-4 rounded-xl border text-center transition-all ${
-              selectedRole === "TENANT"
+            className={`p-4 rounded-xl border text-center transition-all ${selectedRole === "TENANT"
                 ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary/20"
                 : "border-border bg-card hover:bg-muted"
-            }`}
+              }`}
           >
             <span
               className={`block font-semibold ${selectedRole === "TENANT" ? "text-primary" : "text-foreground"}`}
@@ -164,11 +163,10 @@ export default function RegisterPage() {
           <button
             type="button"
             onClick={() => setValue("role", "LANDLORD")}
-            className={`p-4 rounded-xl border text-center transition-all ${
-              selectedRole === "LANDLORD"
+            className={`p-4 rounded-xl border text-center transition-all ${selectedRole === "LANDLORD"
                 ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary/20"
                 : "border-border bg-card hover:bg-muted"
-            }`}
+              }`}
           >
             <span
               className={`block font-semibold ${selectedRole === "LANDLORD" ? "text-primary" : "text-foreground"}`}
@@ -221,11 +219,10 @@ export default function RegisterPage() {
             <input
               type="text"
               placeholder="John Doe"
-              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${
-                errors.name
+              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${errors.name
                   ? "border-destructive focus:ring-destructive/20"
                   : "border-border focus:ring-primary/20"
-              }`}
+                }`}
               {...register("name")}
             />
           </div>
@@ -249,11 +246,10 @@ export default function RegisterPage() {
             <input
               type="email"
               placeholder="you@example.com"
-              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${
-                errors.email
+              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${errors.email
                   ? "border-destructive focus:ring-destructive/20"
                   : "border-border focus:ring-primary/20"
-              }`}
+                }`}
               {...register("email")}
             />
           </div>
@@ -277,11 +273,10 @@ export default function RegisterPage() {
             <input
               type="tel"
               placeholder="+880 1234-567890"
-              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${
-                errors.phone
+              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${errors.phone
                   ? "border-destructive focus:ring-destructive/20"
                   : "border-border focus:ring-primary/20"
-              }`}
+                }`}
               {...register("phone")}
             />
           </div>
@@ -305,11 +300,10 @@ export default function RegisterPage() {
             <input
               type="password"
               placeholder="••••••••"
-              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${
-                errors.password
+              className={`w-full pl-11 pr-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 transition-all ${errors.password
                   ? "border-destructive focus:ring-destructive/20"
                   : "border-border focus:ring-primary/20"
-              }`}
+                }`}
               {...register("password")}
             />
           </div>
